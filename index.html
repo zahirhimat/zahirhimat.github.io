@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zahir Himat | Data-Driven Finance Professional</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #122040;
+    --navy-light: #1c2f55;
+    --gold: #c9a84c;
+    --gold-light: #e8c97a;
+    --gold-pale: #f5e9c8;
+    --cream: #faf8f3;
+    --white: #ffffff;
+    --text-primary: #0a1628;
+    --text-secondary: #3d4f6e;
+    --text-muted: #7a8ba8;
+    --border: rgba(10,22,40,0.1);
+    --border-gold: rgba(201,168,76,0.3);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text-primary); line-height: 1.6; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.96); backdrop-filter: blur(8px);
+    padding: 0 48px; display: flex; align-items: center;
+    justify-content: space-between; height: 60px;
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+  }
+  .nav-logo { font-family: 'DM Serif Display', serif; color: var(--gold); font-size: 18px; letter-spacing: 0.02em; text-decoration: none; }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.65); text-decoration: none; font-size: 13px; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--gold); }
+
+  .hero {
+    min-height: 100vh; background: var(--navy);
+    display: flex; align-items: center; padding: 120px 48px 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .hero-inner { max-width: 900px; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 28px;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(42px, 7vw, 76px); color: var(--white);
+    line-height: 1.05; margin-bottom: 12px; letter-spacing: -0.01em;
+  }
+  .hero h1 em { font-style: italic; color: var(--gold); }
+  .hero-tagline { font-size: 18px; color: rgba(255,255,255,0.5); margin-bottom: 36px; font-weight: 300; letter-spacing: 0.02em; }
+  .hero-bio {
+    font-size: 16px; color: rgba(255,255,255,0.7); max-width: 680px;
+    line-height: 1.8; margin-bottom: 48px;
+    border-left: 2px solid var(--gold); padding-left: 20px;
+  }
+  .hero-stats { display: flex; gap: 48px; flex-wrap: wrap; margin-bottom: 48px; }
+  .hero-stat-num { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--gold); display: block; line-height: 1; margin-bottom: 4px; }
+  .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.45); letter-spacing: 0.08em; text-transform: uppercase; }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 28px; background: var(--gold); color: var(--navy);
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: background 0.2s, transform 0.15s; margin-right: 16px;
+  }
+  .hero-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .hero-cta-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 28px; border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.7); text-decoration: none;
+    font-size: 13px; font-weight: 400; letter-spacing: 0.06em;
+    text-transform: uppercase; transition: border-color 0.2s, color 0.2s;
+  }
+  .hero-cta-ghost:hover { border-color: var(--gold); color: var(--gold); }
+
+  section { padding: 96px 48px; }
+  .section-inner { max-width: 960px; margin: 0 auto; }
+  .section-label {
+    display: inline-flex; align-items: center; gap: 12px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+  }
+  .section-label::after { content: ''; display: block; width: 48px; height: 1px; background: var(--gold-pale); }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 4vw, 40px); color: var(--text-primary); margin-bottom: 48px; line-height: 1.15; }
+
+  .about-section { background: var(--white); }
+  .experience-section { background: var(--cream); }
+
+  .exp-item { display: grid; grid-template-columns: 180px 1fr; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--border); }
+  .exp-item:first-of-type { padding-top: 0; }
+  .exp-item:last-of-type { border-bottom: none; }
+  .exp-date { font-size: 12px; color: var(--gold); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 6px; }
+  .exp-company { font-size: 13px; color: var(--text-muted); }
+  .exp-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--text-primary); margin-bottom: 6px; }
+  .exp-location { font-size: 12px; color: var(--text-muted); margin-bottom: 14px; }
+  .exp-bullets { list-style: none; }
+  .exp-bullets li { font-size: 14px; color: var(--text-secondary); padding: 5px 0 5px 18px; position: relative; line-height: 1.65; }
+  .exp-bullets li::before { content: ''; position: absolute; left: 0; top: 14px; width: 6px; height: 1px; background: var(--gold); }
+
+  .projects-section { background: var(--navy); }
+  .projects-section .section-title { color: var(--white); }
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.15); }
+  .project-card { background: var(--navy-mid); padding: 36px 32px; transition: background 0.2s; }
+  .project-card:hover { background: var(--navy-light); }
+  .project-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; display: block; }
+  .project-title { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--white); margin-bottom: 8px; line-height: 1.2; }
+  .project-org { font-size: 12px; color: rgba(255,255,255,0.35); margin-bottom: 16px; }
+  .project-body { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; }
+  .project-metric { margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(201,168,76,0.2); font-size: 13px; color: var(--gold-light); font-weight: 500; }
+
+  .skills-section { background: var(--white); }
+  .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; }
+  .skill-group-title { font-size: 11px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border-gold); }
+  .skill-item { font-size: 14px; color: var(--text-secondary); padding: 6px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 8px; }
+  .skill-item::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+
+  .awards-section { background: var(--cream); }
+  .award-item { display: flex; justify-content: space-between; align-items: flex-start; gap: 24px; padding: 20px 0; border-bottom: 1px solid var(--border); }
+  .award-item:last-child { border-bottom: none; }
+  .award-name { font-size: 16px; font-weight: 500; color: var(--text-primary); margin-bottom: 3px; }
+  .award-org { font-size: 13px; color: var(--text-muted); }
+  .award-year { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--gold); flex-shrink: 0; }
+
+  .contact-section { background: var(--navy); }
+  .contact-section .section-title { color: var(--white); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .contact-intro { font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.8; margin-bottom: 32px; }
+  .contact-item { display: flex; align-items: center; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .contact-item:last-child { border-bottom: none; }
+  .contact-icon-box { width: 36px; height: 36px; border: 1px solid rgba(201,168,76,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .contact-icon-box svg { stroke: var(--gold); }
+  .contact-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 2px; }
+  .contact-value { font-size: 14px; color: rgba(255,255,255,0.8); text-decoration: none; }
+  a.contact-value:hover { color: var(--gold); }
+  .education-card { background: rgba(255,255,255,0.04); border: 1px solid rgba(201,168,76,0.2); padding: 28px; }
+  .edu-label { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+  .edu-degree { font-family: 'DM Serif Display', serif; font-size: 20px; color: var(--white); margin-bottom: 4px; }
+  .edu-school { font-size: 14px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+  .edu-details { display: flex; flex-direction: column; gap: 8px; }
+  .edu-detail { display: flex; justify-content: space-between; font-size: 13px; color: rgba(255,255,255,0.45); padding-bottom: 8px; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .edu-detail:last-child { border-bottom: none; }
+  .edu-detail strong { color: rgba(255,255,255,0.8); font-weight: 400; }
+
+  footer { background: var(--navy); border-top: 1px solid rgba(201,168,76,0.15); padding: 28px 48px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+  .footer-name { font-family: 'DM Serif Display', serif; color: var(--gold); font-size: 16px; }
+  .footer-copy { font-size: 12px; color: rgba(255,255,255,0.25); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-inner > * { animation: fadeUp 0.6s ease both; }
+  .hero-inner > *:nth-child(1) { animation-delay: 0.1s; }
+  .hero-inner > *:nth-child(2) { animation-delay: 0.2s; }
+  .hero-inner > *:nth-child(3) { animation-delay: 0.3s; }
+  .hero-inner > *:nth-child(4) { animation-delay: 0.4s; }
+  .hero-inner > *:nth-child(5) { animation-delay: 0.5s; }
+  .hero-inner > *:nth-child(6) { animation-delay: 0.6s; }
+
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 64px 24px; }
+    .hero { padding: 100px 24px 64px; }
+    .hero-stats { gap: 28px; }
+    .exp-item { grid-template-columns: 1fr; gap: 8px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    footer { padding: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">Zahir Himat</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Finance &amp; Investment Professional</div>
+    <h1>Building the<br><em>Future in Finance</em></h1>
+    <p class="hero-tagline">Zahir Himat &nbsp;·&nbsp; Richmond, VA</p>
+    <p class="hero-bio">
+      High-achieving Finance junior at Virginia Commonwealth University (4.0 GPA) with a rare combination of elite academic performance, U.S. banking experience, and 5+ years of multinational military leadership. Fluent in five languages and uniquely positioned for investment banking, private equity, or financial analysis roles that demand intellectual rigor and operational discipline.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">4.0</span>
+        <span class="hero-stat-label">GPA at VCU</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">5+</span>
+        <span class="hero-stat-label">Years military leadership</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">5</span>
+        <span class="hero-stat-label">Languages fluent</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">1,500+</span>
+        <span class="hero-stat-label">Soldiers trained</span>
+      </div>
+    </div>
+    <div>
+      <a class="hero-cta" href="#contact">Get in touch</a>
+      <a class="hero-cta-ghost" href="#experience">View experience</a>
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="section-inner">
+    <div class="section-label">About</div>
+    <h2 class="section-title">A rare combination of <em style="font-family:'DM Serif Display',serif;font-style:italic">academic excellence</em> and real-world leadership</h2>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+      <div>
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.85;margin-bottom:20px">
+          From leading multinational NATO-allied operations in Kabul to advising clients on financial products at Truist Bank in Richmond — Zahir's career spans geographies, disciplines, and languages. He brings the operational discipline of a seasoned military officer and the analytical rigor of a top finance student.
+        </p>
+        <p style="font-size:15px;color:var(--text-secondary);line-height:1.85">
+          Pursuing a BS in Finance at VCU's School of Business (expected December 2027), Zahir is targeting roles in investment banking, private equity, and financial analysis where his cross-cultural fluency, data-driven mindset, and client-first approach can drive real impact.
+        </p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="padding:24px;border:1px solid var(--border-gold);background:var(--gold-pale)">
+          <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:8px">Target roles</div>
+          <div style="font-size:14px;color:var(--text-secondary);line-height:1.8">Investment Banking &nbsp;·&nbsp; Private Equity &nbsp;·&nbsp; Financial Analysis &nbsp;·&nbsp; Business Strategy</div>
+        </div>
+        <div style="padding:24px;border:1px solid var(--border);background:var(--cream)">
+          <div style="font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:10px">Military training</div>
+          <div style="font-size:13px;color:var(--text-secondary);line-height:1.9">
+            Logistics Captains Career Course — U.S. Army<br>
+            American Language Course — Defense Language Institute<br>
+            CoreIMS Inventory Management Certification
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="experience-section" id="experience">
+  <div class="section-inner">
+    <div class="section-label">Experience</div>
+    <h2 class="section-title">Professional history</h2>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jul 2025 – Present</div>
+        <div class="exp-company">Truist Bank</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Universal Banker II</div>
+        <div class="exp-location">Richmond, VA &nbsp;·&nbsp; Part-Time</div>
+        <ul class="exp-bullets">
+          <li>Assess client financial needs and recommend tailored banking products including checking, savings, CDs, and money market accounts; refer qualified clients to investment, mortgage, and business specialists.</li>
+          <li>Execute complex transactions with zero compliance deficiencies under strict regulatory and operational risk standards.</li>
+          <li>Drive digital banking adoption and improve customer satisfaction scores; contribute to branch sales targets through consistent high-quality service.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Sep 2024 – May 2025</div>
+        <div class="exp-company">Virginia Commonwealth University</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Research Assistant — (In)Security Lab</div>
+        <div class="exp-location">Richmond, VA &nbsp;·&nbsp; Part-Time</div>
+        <ul class="exp-bullets">
+          <li>Conducted in-depth research on WWII-era war crimes using academic repositories and scholarly databases.</li>
+          <li>Synthesized complex historical and legal findings into structured summaries meeting strict editorial and academic standards.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Sep 2022 – Aug 2024</div>
+        <div class="exp-company">CRH Catering Company, Inc.</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Warehouse Operations Manager</div>
+        <div class="exp-location">Richmond, VA</div>
+        <ul class="exp-bullets">
+          <li>Drove picker throughput from 1,800 to 4,000 pieces/hour — a 122% productivity increase — through targeted coaching, process redesign, and performance management.</li>
+          <li>Reduced inventory shrinkage from 23% to ~8% within 9 months via data-backed corrective controls, directly protecting company margins.</li>
+          <li>Redesigned picking and storage systems using SQL queries to track stock movement and generate operational reports.</li>
+          <li>Led full warehouse relocation and pick-line redesign with minimal operational downtime.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jun 2020 – Apr 2021</div>
+        <div class="exp-company">ANA Command &amp; Staff Academy</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Logistics Officer &amp; Language Instructor</div>
+        <div class="exp-location">Kabul, AFG</div>
+        <ul class="exp-bullets">
+          <li>Led activation of the CoreIMS inventory management system at CSA, coordinating with NATO Resolute Support Mission advisors.</li>
+          <li>Modernized logistics training with updated electronic forms and NATO-standard procedures.</li>
+          <li>Delivered public speaking instruction to prepare ANA officers for command briefings and multinational engagements.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">May 2017 – Jun 2020</div>
+        <div class="exp-company">Combat Services Support School, ANA</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Foreign Relations Officer &amp; CoreIMS Instructor</div>
+        <div class="exp-location">Kabul, AFG</div>
+        <ul class="exp-bullets">
+          <li>Facilitated key leader engagements between CSSS and multinational forces — U.S., German, Romanian, Danish, and UK advisors.</li>
+          <li>Ensured 100% of CoreIMS graduates could fully activate and operate the system at their respective supply depots.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">
+        <div class="exp-date">Jul 2016 – Apr 2017</div>
+        <div class="exp-company">CSSS, ANA</div>
+      </div>
+      <div class="exp-content">
+        <div class="exp-title">Military License &amp; Examination Section Director</div>
+        <div class="exp-location">Kabul, AFG</div>
+        <ul class="exp-bullets">
+          <li>Trained and certified more than 1,500 ANA soldiers in vehicle operations as head of the only ANA school authorized to issue military operator licenses.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="projects-section" id="projects">
+  <div class="section-inner">
+    <div class="section-label">Projects</div>
+    <h2 class="section-title">Key highlights &amp; work samples</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <span class="project-tag">Operations · Data</span>
+        <div class="project-title">Warehouse operations turnaround</div>
+        <div class="project-org">CRH Catering Company</div>
+        <div class="project-body">Redesigned an entire warehouse's picking, storage, and reporting infrastructure using SQL-based stock tracking. Implemented KPIs, staff coaching programs, and process controls that transformed operational performance.</div>
+        <div class="project-metric">+122% picker throughput &nbsp;·&nbsp; Shrinkage: 23% → 8%</div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Logistics · International</span>
+        <div class="project-title">CoreIMS national implementation</div>
+        <div class="project-org">Afghan National Army</div>
+        <div class="project-body">Led nationwide rollout and activation of CoreIMS inventory management system across ANA supply depots. Developed curriculum, trained logistics personnel, and coordinated with NATO Resolute Support Mission advisors.</div>
+        <div class="project-metric">100% graduate activation rate &nbsp;·&nbsp; NATO-standard compliance</div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Finance · Academic</span>
+        <div class="project-title">Truist merit scholarship recipient</div>
+        <div class="project-org">VCU School of Business · 2025</div>
+        <div class="project-body">Awarded a competitive merit-based scholarship by Truist Bank through VCU's School of Business, recognizing top academic performance and professional potential in finance. Maintained 4.0 GPA and Dean's List standing throughout.</div>
+        <div class="project-metric">4.0 GPA &nbsp;·&nbsp; Dean's Scholar 2025–2026</div>
+      </div>
+      <div class="project-card">
+        <span class="project-tag">Research · Editorial</span>
+        <div class="project-title">WWII war crimes research project</div>
+        <div class="project-org">VCU (In)Security Lab</div>
+        <div class="project-body">Supported a Political Science research project through rigorous use of academic repositories and scholarly databases. Synthesized complex historical and legal findings into publication-ready structured summaries with full editorial integrity.</div>
+        <div class="project-metric">Zero AI assistance &nbsp;·&nbsp; Academic publication standard</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="skills-section" id="skills">
+  <div class="section-inner">
+    <div class="section-label">Skills</div>
+    <h2 class="section-title">Areas of expertise</h2>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-group-title">Finance</div>
+        <div class="skill-item">Financial analysis</div>
+        <div class="skill-item">Valuation fundamentals</div>
+        <div class="skill-item">Banking operations</div>
+        <div class="skill-item">Risk &amp; compliance</div>
+        <div class="skill-item">Capital markets</div>
+        <div class="skill-item">Portfolio concepts</div>
+      </div>
+      <div>
+        <div class="skill-group-title">Operations</div>
+        <div class="skill-item">Supply chain management</div>
+        <div class="skill-item">Inventory control (CoreIMS)</div>
+        <div class="skill-item">Logistics planning</div>
+        <div class="skill-item">Process optimization</div>
+        <div class="skill-item">P&amp;L awareness</div>
+      </div>
+      <div>
+        <div class="skill-group-title">Technical</div>
+        <div class="skill-item">Microsoft Excel (advanced)</div>
+        <div class="skill-item">SQL</div>
+        <div class="skill-item">PowerPoint</div>
+        <div class="skill-item">Academic research databases</div>
+      </div>
+      <div>
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-item">English (fluent)</div>
+        <div class="skill-item">German (fluent)</div>
+        <div class="skill-item">Pashto (fluent)</div>
+        <div class="skill-item">Dari / Farsi (fluent)</div>
+        <div class="skill-item">Urdu (fluent)</div>
+        <div class="skill-item">Arabic (conversational)</div>
+      </div>
+      <div>
+        <div class="skill-group-title">Soft skills</div>
+        <div class="skill-item">Public speaking</div>
+        <div class="skill-item">Cross-cultural communication</div>
+        <div class="skill-item">Team leadership</div>
+        <div class="skill-item">Critical thinking</div>
+        <div class="skill-item">Client relations</div>
+        <div class="skill-item">Positive mindset</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="awards-section" id="awards">
+  <div class="section-inner">
+    <div class="section-label">Recognition</div>
+    <h2 class="section-title">Awards &amp; honors</h2>
+    <div>
+      <div class="award-item">
+        <div><div class="award-name">Dean's Scholar</div><div class="award-org">VCU School of Business</div></div>
+        <div class="award-year">2025–26</div>
+      </div>
+      <div class="award-item">
+        <div><div class="award-name">Truist Merit-Based Scholarship</div><div class="award-org">VCU School of Business</div></div>
+        <div class="award-year">2025</div>
+      </div>
+      <div class="award-item">
+        <div><div class="award-name">Army Demonstrated Senior Logistician Award</div><div class="award-org">Society of Logistics Engineers (SOLE)</div></div>
+        <div class="award-year">2022</div>
+      </div>
+      <div class="award-item">
+        <div><div class="award-name">German Armed Forces DSSB Award, Gold</div><div class="award-org">Volkach, Germany</div></div>
+        <div class="award-year">2014</div>
+      </div>
+      <div class="award-item">
+        <div><div class="award-name">Distinguished Honor Student</div><div class="award-org">Kabul Military High School</div></div>
+        <div class="award-year">2012</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <h2 class="section-title">Let's connect</h2>
+    <div class="contact-grid">
+      <div>
+        <p class="contact-intro">Open to opportunities in investment banking, private equity, and financial analysis. Feel free to reach out directly.</p>
+        <div class="contact-item">
+          <div class="contact-icon-box">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.2"><rect x="1" y="3" width="14" height="10" rx="1.5"/><path d="M1 5l7 5 7-5"/></svg>
+          </div>
+          <div><div class="contact-label">Email</div><a href="mailto:Himatz@vcu.edu" class="contact-value">Himatz@vcu.edu</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-box">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.2"><path d="M2 2h3l1.5 4-1.8 1.1a9 9 0 004.2 4.2L10 9.5l4 1.5v3A1 1 0 0113 15C6.4 15 1 9.6 1 3a1 1 0 011-1z"/></svg>
+          </div>
+          <div><div class="contact-label">Phone</div><a href="tel:8044908537" class="contact-value">804-490-8537</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-box">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.2"><rect x="1" y="1" width="14" height="14" rx="2"/><path d="M5 7v5M5 4.5v.5M8 12V7m0 0V5a2 2 0 014 0v2m0 5V7"/></svg>
+          </div>
+          <div><div class="contact-label">LinkedIn</div><a href="https://linkedin.com/in/zahir-himat-fin0422" target="_blank" class="contact-value">linkedin.com/in/zahir-himat-fin0422</a></div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon-box">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke-width="1.2"><path d="M8 1.5a4.5 4.5 0 100 9 4.5 4.5 0 000-9z"/><path d="M2 14c0-2.2 2.7-4 6-4s6 1.8 6 4"/></svg>
+          </div>
+          <div><div class="contact-label">Location</div><span class="contact-value">Richmond, VA</span></div>
+        </div>
+      </div>
+      <div>
+        <div class="education-card">
+          <div class="edu-label">Education</div>
+          <div class="edu-degree">BS in Finance</div>
+          <div class="edu-school">Virginia Commonwealth University — School of Business</div>
+          <div class="edu-details">
+            <div class="edu-detail"><span>Expected graduation</span><strong>December 2027</strong></div>
+            <div class="edu-detail"><span>GPA</span><strong>4.0 / 4.0</strong></div>
+            <div class="edu-detail"><span>Standing</span><strong>Junior · Dean's List</strong></div>
+            <div class="edu-detail"><span>Scholarship</span><strong>Truist Merit-Based · 2025</strong></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Zahir Himat</span>
+  <span class="footer-copy">Finance &amp; Investment Professional &nbsp;·&nbsp; Richmond, VA &nbsp;·&nbsp; 2026</span>
+</footer>
+
+</body>
+</html>
